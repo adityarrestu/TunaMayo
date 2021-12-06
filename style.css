@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+header {
+    z-index: 17;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    left: 0px;
+    top: 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    background: #232428;
+}
+
+.left-nav {
+    display: flex;
+    margin-left: 16px;
+    align-items: center;
+}
+
+.logo {
+    width: 136px;
+    height: 25px;
+    cursor: pointer;
+}
+
+nav, ul, li, a {
+    display: inline-block;
+    padding: 0px 13px;
+    text-decoration: none;
+    line-height: 21px;
+    list-style: none;
+    color: #FFFFFF;
+    transition: all 0.3s ease 0s;
+}
+
+nav a:hover {
+    color: #3E96DB;
+}
+
+.search {
+    width: 300px;
+    height: 36px;
+    background: rgba(68, 69, 72, 0.5);
+    border: 1px solid #555659;
+    box-sizing: border-box;
+    border-radius: 15px;
+    justify-content: flex-end;
+}
+
+body {
+    height: 2086px;
+    background: #111319;
+}
+
+.banner {
+    margin-top: 50px;
+    width: 100%;
+    height: 728px;
+    background: #555659;
+    overflow: hidden;
+}
+
+.shadow-banner {
+    /* height: 728px; */
+    z-index: 3;
+    position: absolute;
+    width: 100%;
+    height: 728px;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    margin: 0px auto;
+    margin-top: 60px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.shadow-left {
+    position: absolute;
+    z-index: 3;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(270deg, rgba(17, 19, 25, 0) 53.62%, #111319 100%);
+}
+
+.shadow-bottom {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(17, 19, 25, 0) 59.92%, #111319 100.74%);
+}
+
+.slider-banner {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 728px;
+}
+
+.background-banner {
+    width: 100%;
+    height: 100%;
+    background: url(./aset/img/Takt-op.Destiny.BasicBackground.webp) no-repeat;
+    background-size: cover;
+    background-position-y: 25%;
+    overflow: hidden;
+}
+
+.poster-banner {
+    position: absolute;
+    width: 514PX;
+    height: 100%;
+    top: 0px;
+    right: 90px;
+    background: url(./aset/img/takt-op.Destiny-Visual.jpg);
+    background-size: cover;
+}
+
+.description-banner {
+    z-index: 7;
+    position: absolute;
+    width: 624px;
+    height: auto;
+    top: 150px;
+    left: 120px;
+    cursor:default;
+}
+
+.title-banner {
+    width: auto;
+    height: 100px;
+    margin: 20px 0px;
+    background: url(./aset/img/takt\ op.svg) no-repeat;
+}
+
+.rate-year {
+    display: flex;
+    width: 100%;
+    height: 21px;
+}
+
+.line {
+    width: 1px;
+    height: auto;
+    margin: 0px 4px;
+    border: 1px solid #3E96DB;
+}
+
+.rating, p {
+    display: flex;
+    width: auto;
+    height: 100%;
+    margin: 0px 4px;
+    color: #3E96DB;
+}
+
+.year p {
+    margin: 0px 4px;
+    color: #FFFFFF;
+}
+
+.tag-list {
+    margin: 10px 0px;
+    display: flex;
+    width: 624px;
+    height: auto;
+    overflow: hidden;
+}
+
+.tag {
+    margin: 0px;
+    margin-right: 10px;
+    padding: 2px 10px;
+    color: rgb(255, 255, 255, 0.9);
+    background: rgb(35,36,40, 0.5);
+    border-radius: 5px;
+}
+
+.description p {
+    width: 624px;
+    margin: 8px 0px;
+    color: #FFFFFF;
+}
+
+.round {
+    z-index: 7;
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    top: 435px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.play {
+    left: 120px;
+    background: #3E96DB;
+}
+
+.plus {
+    left: 200px;
+    background: #ffffff;
+}
+
+.arrow {
+    z-index: 7;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-top: 6px solid #ffffff;
+    border-left: 6px solid #ffffff;
+    border-radius: 5px;
+    top: 300px;
+    cursor: pointer;
+}
+
+.left {
+    left: 3%;
+    transform: rotate(-45deg);
+}
+
+.right {
+    right: 3%;
+    transform: rotate(135deg);
+}
+.arrow::before {
+    border: solid #ffffff;
+    transform: rotate(127.55);
+}
+
+.arrow::after {
+    transform: rotate(-127.55);
+}
+
