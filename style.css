@@ -103,13 +103,23 @@ body {
 }
 
 .slider-banner {
-    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 728px;
+    overflow: hidden;
+}
+
+.slide {
     position: absolute;
     width: 100%;
     height: 728px;
 }
+.slide.active {
+    transition: 2s ease;
+}
 
 .background-banner {
+    z-index: 2;
     width: 100%;
     height: 100%;
     background: url(./aset/img/Takt-op.Destiny.BasicBackground.webp) no-repeat;
@@ -119,6 +129,7 @@ body {
 }
 
 .poster-banner {
+    z-index: 2;
     position: absolute;
     width: 514PX;
     height: 100%;
@@ -133,7 +144,7 @@ body {
     position: absolute;
     width: 624px;
     height: auto;
-    top: 150px;
+    top: 120px;
     left: 120px;
     cursor:default;
 }
@@ -183,8 +194,8 @@ body {
     margin: 0px;
     margin-right: 10px;
     padding: 2px 10px;
-    color: rgb(255, 255, 255, 0.9);
-    background: rgb(35,36,40, 0.5);
+    color: rgb(255, 255, 255, 0.8);
+    background: rgb(35,36,40, 0.2);
     border-radius: 5px;
 }
 
@@ -199,7 +210,7 @@ body {
     position: absolute;
     width: 58px;
     height: 58px;
-    top: 435px;
+    top: 450px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -245,3 +256,24 @@ body {
     transform: rotate(-127.55);
 }
 
+.navigation-banner {
+    z-index: 7;
+    position: absolute;
+    display: flex;
+    top: 550px;
+    left: 120px;
+    justify-content: center;
+}
+
+.slide-icon {
+    z-index: inherit;
+    width: 10px;
+    height: 10px;
+    margin: 0px 5px;
+    background: #555659;
+}
+
+.slide-icon.active {
+    width: 15px;
+    background: #3E96DB;
+}
