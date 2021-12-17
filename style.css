@@ -7,45 +7,11 @@
     font-size: 18px;
 }
 
-header {
-    z-index: 17;
-    position: fixed;
-    display: flex;
-    width: 100%;
-    height: 60px;
-    left: 0px;
-    top: 0px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10px;
-    background: #232428;
-}
 
-.left-nav {
-    display: flex;
-    margin-left: 16px;
-    align-items: center;
-}
 
-.logo {
-    width: 136px;
-    height: 25px;
-    cursor: pointer;
-}
 
-nav, ul, li, a {
-    display: inline-block;
-    padding: 0px 13px;
-    text-decoration: none;
-    line-height: 21px;
-    list-style: none;
-    color: #FFFFFF;
-    transition: all 0.3s ease 0s;
-}
 
-nav a:hover {
-    color: #3E96DB;
-}
+
 
 .search {
     width: 300px;
@@ -70,6 +36,7 @@ body {
     overflow: hidden;
 }
 
+/* shadow banner */
 .shadow-banner {
     /* height: 728px; */
     z-index: 3;
@@ -102,41 +69,71 @@ body {
     background: linear-gradient(180deg, rgba(17, 19, 25, 0) 59.92%, #111319 100.74%);
 }
 
+/* slider banner */
 .slider-banner {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 728px;
-    overflow: hidden;
 }
 
 .slide {
     position: absolute;
     width: 100%;
-    height: 728px;
-}
-.slide.active {
-    transition: 2s ease;
+    height: 100%;
 }
 
-.background-banner {
-    z-index: 2;
+.slide .frame {
+    opacity: 0%;
+    transition: opacity 350ms linear;
+    transition-delay: 800ms;
+}
+
+.slide.active .frame {
+    z-index: 5;
+    opacity: 100%;
+}
+
+.slide.next-slide .frame {
+    z-index: 4;
+    opacity: 100%;
+    transition: opacity 1000ms ease-out;
+}
+
+.slide .background-banner {
+    position: absolute;
     width: 100%;
     height: 100%;
-    background: url(./aset/img/Takt-op.Destiny.BasicBackground.webp) no-repeat;
     background-size: cover;
     background-position-y: 25%;
     overflow: hidden;
 }
 
-.poster-banner {
-    z-index: 2;
+.slide .poster-banner {
+    z-index: 7;
     position: absolute;
-    width: 514PX;
+    width: 514px;
     height: 100%;
     top: 0px;
-    right: 90px;
-    background: url(./aset/img/takt-op.Destiny-Visual.jpg);
     background-size: cover;
+    opacity: 0%;
+    animation: moveout 1600ms ease-in forwards;
+}
+
+/* .slide.active .poster-banner {
+    animation: move-in 500ms ease-in-out forwards;
+    animation-delay: 500ms;
+} */
+
+@keyframes movein {
+    0% {opacity: 0%; right: -540px;}
+    100% {opacity: 100%; right: 90px;}
+}
+
+@keyframes moveout {
+    0% {opacity: 100%; right: 90px;}
+    25% {opacity: 100%; right: 120px;}
+    60% {opacity: 0%; right: 400px;}
+    100% {opacity: 0%; right: 400px;}
 }
 
 .description-banner {
@@ -226,6 +223,7 @@ body {
     background: #ffffff;
 }
 
+/* simbpl arrow */
 .arrow {
     z-index: 7;
     position: absolute;
@@ -247,22 +245,15 @@ body {
     right: 3%;
     transform: rotate(135deg);
 }
-.arrow::before {
-    border: solid #ffffff;
-    transform: rotate(127.55);
-}
 
-.arrow::after {
-    transform: rotate(-127.55);
-}
-
-.navigation-banner {
+.nav-icon {
     z-index: 7;
     position: absolute;
     display: flex;
     top: 550px;
     left: 120px;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .slide-icon {
@@ -274,6 +265,6 @@ body {
 }
 
 .slide-icon.active {
-    width: 15px;
+    width: 18px;
     background: #3E96DB;
 }
