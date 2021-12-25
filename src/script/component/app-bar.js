@@ -16,7 +16,10 @@ class AppBar extends HTMLElement {
                 margin: 0px;
                 padding: 0px;
                 box-sizing: border-box;
+                font-family: Roboto, sans-serif;
+                font-weight: 500;
             }
+            
 
             :host {
                 z-index: 17;
