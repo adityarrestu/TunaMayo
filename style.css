@@ -1,4 +1,4 @@
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,18 +7,8 @@
     font-size: 18px;
 }
 
-.search {
-    width: 300px;
-    height: 36px;
-    background: rgba(68, 69, 72, 0.5);
-    border: 1px solid #555659;
-    box-sizing: border-box;
-    border-radius: 15px;
-    justify-content: flex-end;
-}
-
-/* body {
-    height: 2086px;
+body {
+    width: 100%;
+    height: 100%;
     background: #111319;
-} */
-
+}

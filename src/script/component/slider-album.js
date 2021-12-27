@@ -25,7 +25,7 @@ class SliderAlbum extends HTMLElement {
                 
                 .carousel {
                     top: 60px;
-                    width: 100vw;
+                    width: 100%;
                     height: 91vh;
                     position: relative;
                     overflow: hidden;
@@ -93,7 +93,7 @@ class SliderAlbum extends HTMLElement {
                     z-index: 5;
                     position: absolute;
                     display: flex;
-                    top: 90%;
+                    top: 80%;
                     left: 8%;
                 }
 
@@ -117,7 +117,7 @@ class SliderAlbum extends HTMLElement {
                     z-index: 5;
                     position: absolute;
                     display: flex;
-                    top: 73%;
+                    top: 65%;
                     left: 7%;
                 }
 
@@ -191,24 +191,33 @@ class SliderAlbum extends HTMLElement {
         const arrayIcon = [...sliderIcon]; 
         arrayIcon[0].classList.add("active");       
 
+        // slider change function
+        let changeSlide = offset => {
+            const activeData = slider.querySelector("slider-item.data-active");
+            let newIndex = arraySlider.indexOf(activeData) + offset;
+            if (newIndex >= arraySlider.length) newIndex = 0;
+            if (newIndex < 0) newIndex = arraySlider.length - 1;
+
+            // add class active data and remove
+            arraySlider[newIndex].classList.add("data-active");
+            activeData.classList.remove("data-active");
+            
+            // nav icon active change
+            const actveIcon = navIcon.querySelector(".slide-icon.active");     
+            arrayIcon[newIndex].classList.add("active");
+            actveIcon.classList.remove("active");
+
+            // url album change
+            linkAlbum.setAttribute("href", albumsHandle[newIndex].urlAlbum);
+        }
+
         // loop slider
         let playSlider;
         let repeater = () => {
             playSlider = setInterval(function () {
-                const activeData = slider.querySelector("slider-item.data-active");
-                let newIndex = arraySlider.indexOf(activeData) + 1;
-                if (newIndex >= arraySlider.length) newIndex = 0;
                 
-                // add class active data and remove
-                arraySlider[newIndex].classList.add("data-active");
-                activeData.classList.remove("data-active");
+                changeSlide(1);
 
-                // nav icon active change
-                const actveIcon = navIcon.querySelector(".slide-icon.active");     
-                arrayIcon[newIndex].classList.add("active");
-                actveIcon.classList.remove("active");
-
-                linkAlbum.setAttribute("href", albumsHandle[newIndex].urlAlbum);
             }, 5000)
         }
         repeater();
@@ -220,20 +229,8 @@ class SliderAlbum extends HTMLElement {
                 clearInterval(playSlider);
                 const offset = button.className === "next" ? 1 : -1;
 
-                const activeData = slider.querySelector("slider-item.data-active");
-                let newIndex = arraySlider.indexOf(activeData) + offset;
-                if (newIndex >= arraySlider.length) newIndex = 0;
-                if (newIndex < 0) newIndex = arraySlider.length - 1;
-
-                // add class active data and remove
-                arraySlider[newIndex].classList.add("data-active");
-                activeData.classList.remove("data-active");
+                changeSlide(offset);
                 
-                // nav icon active change
-                const actveIcon = navIcon.querySelector(".slide-icon.active");     
-                arrayIcon[newIndex].classList.add("active");
-                actveIcon.classList.remove("active");
-
                 repeater();
             })
         })

@@ -90,6 +90,7 @@ class SliderItem extends HTMLElement {
                     width: 100%;
                     margin: 8px 0px;
                     overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 
                 /* poster */
@@ -125,7 +126,11 @@ class SliderItem extends HTMLElement {
                     display: flex;
                     width: 100%;
                     height: 30px;
-                    overflow-x: auto;
+                    overflow-x: scroll;
+                }
+
+                .tag-list::-webkit-scrollbar {
+                    display: none;
                 }
                 
                 .tag {
@@ -133,6 +138,7 @@ class SliderItem extends HTMLElement {
                     background: rgba(0, 0, 0, .5);
                     border-radius: 8px;
                     text-align: center;
+                    white-space: nowrap;
                 }
             </style>
 
