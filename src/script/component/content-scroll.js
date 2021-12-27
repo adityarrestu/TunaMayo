@@ -27,15 +27,16 @@ class ContentScroll extends HTMLElement {
                     z-index: 7;
                     position: relative;
                     width: 100%;
-                    height: 300px;
+                    height: 280px;
                     top: -3vh;
                     display: flex;
                     flex-direction: column;
+                    align-items: center;
                     background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), #111319);
                 }
                 
                 .flex-container {
-                    max-width: 1300px;
+                    max-width: 96%;
                     margin: 0px 20px;
                     display: flex;
                     justify-content: center;
@@ -44,7 +45,7 @@ class ContentScroll extends HTMLElement {
 
                 .horizontal-scroll {
                     max-height: 100%;
-                    max-width: 1200px;
+                    max-width: 98%;
                     margin: 0px 10px;
                     display: flex;
                     overflow-x: hidden;
@@ -87,8 +88,9 @@ class ContentScroll extends HTMLElement {
                 }
 
                 h2 {
-                    margin: 10px 7%;
-                    left: 8%;
+                    width: 88%;
+                    margin: 10px 10%;
+                    font-size: 24px;
                     color: #ffffff;
                 }
             </style>
@@ -116,15 +118,8 @@ class ContentScroll extends HTMLElement {
         const buttons = this.shadowDOM.querySelectorAll("button");
         buttons.forEach(button => {
             button.addEventListener("click", () => {
-                // button.className === "next" ? horizonScroll.scrollLeft += 1200 : horizonScroll.scrollLeft -= 1200;
                 const offset = button.className === "next" ? 1200 : -1200;
-
-
                 horizonScroll.scrollLeft += offset;
-                console.log(offset);
-                console.log(horizonScroll.scrollLeft + offset);
-                console.log(horizonScroll.scrollWidth -1200);
-                console.log(button.className);
 
                 const buttonPrev = this.shadowDOM.querySelector(".prev");
                 const buttonNext = this.shadowDOM.querySelector(".next");
@@ -135,25 +130,6 @@ class ContentScroll extends HTMLElement {
                     buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
             })
         })
-        
-        // observe first and last content to hide button
-        // const contentItem = this.shadowDOM.querySelectorAll("content-item");        
-        // const firstCardObserver = new IntersectionObserver(entries => {
-        //     const firstCard = entries[0];
-        //     const buttonPrev = this.shadowDOM.querySelector(".prev");
-            
-        //     firstCard.isIntersecting ? buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
-        // })
-        
-        // const lastCardObserver = new IntersectionObserver(entries => {
-        //     const lastCard = entries[entries.length -1];
-        //     const buttonNext = this.shadowDOM.querySelector(".next");
-        //     lastCard.isIntersecting ? buttonNext.style.opacity = 0 : buttonNext.style.opacity = 1;
-            
-        // })  
-
-        // firstCardObserver.observe(contentItem[0]);
-        // lastCardObserver.observe(contentItem[contentItem.length - 1])
 
     }
 

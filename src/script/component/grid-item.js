@@ -1,4 +1,4 @@
-class ContentItem extends HTMLElement {
+class GridItem extends HTMLElement {
     constructor() {
         super();
         this.shadowDOM = this.attachShadow({ mode: 'open'});
@@ -10,27 +10,28 @@ class ContentItem extends HTMLElement {
 
     set album(album) {
         this._album = album;
+        this.render();
     }
 
-    render() {  
+    render() {
         this.shadowDOM.innerHTML = `
             <style>
                 :host {
-                    min-width: 290px;
+                    width: 180px;
                     margin: 5px;
                 }
 
-                .content-wrap {
+                .album-wrap {
                     display: flex;
-                    height: 170px;
-                    width: 100%;
-                    background: url("${this._album.banner}") no-repeat center;
+                    width: 180px;
+                    height: 260px;
+                    background: url("${this._album.poster}") no-repeat center;
                     background-size: cover;
                     border-radius: 10px;
                     align-items: flex-end;
                 }
                 
-                .content-wrap > img {
+                .album-wrap > img {
                     max-width: 250px;
                     object-fit: cover;
                 }
@@ -47,22 +48,21 @@ class ContentItem extends HTMLElement {
                 }
 
                 .title {
-                    max-width: 290px;  
-                    max-height: 44px; 
-                    margin: 10px 0px;
+                    max-width: 180px;   
+                    max-height: 40px; 
+                    margin: 10px 0 5px 0;
                     color: #8A8A8D;
-                    text-overflow: ellipsis;
+                    font-size: 16px;
+                    overflow: hidden;
                 }
             </style>
 
-            <div class="content-wrap">
+            <div class="album-wrap">
                 <p class="episode">${this._album.statusAlbum}</p>
             </div>
             <p class="title">${this._album.title}</p>
         `;
-        
     }
-
 }
 
-customElements.define('content-item', ContentItem);
+customElements.define("grid-item", GridItem);

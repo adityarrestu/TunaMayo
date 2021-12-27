@@ -237,7 +237,7 @@ let albums = [
             "Remaja Laki-laki",
             "Bahasa Jepang"
         ],
-        statusAlbum: 'Completed'
+        statusAlbum: ''
     },
 ];    
 

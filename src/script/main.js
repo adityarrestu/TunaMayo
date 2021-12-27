@@ -1,6 +1,7 @@
 import './component/app-bar.js';
 import './component/slider-album.js';
 import './component/content-scroll.js';
+import './component/grid-content.js';
 import albums from './component/albums.js';
 import featuredAlbums from './component/featured-album.js';
 
@@ -16,3 +17,7 @@ main.appendChild(contentScroll);
 const contentScrollNew = document.createElement("content-scroll");
 contentScrollNew.albums = albums;
 main.appendChild(contentScrollNew);
+
+const gridContent =  document.createElement("grid-content");
+gridContent.albums = albums;
+main.appendChild(gridContent);
