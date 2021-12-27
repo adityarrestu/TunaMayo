@@ -47,8 +47,7 @@ class ContentScroll extends HTMLElement {
                     max-width: 1200px;
                     margin: 0px 10px;
                     display: flex;
-                    overflow: hidden;
-                    overflow-x: scroll;
+                    overflow-x: hidden;
                     scroll-behavior: smooth;
                     -ms-overflow-style: 0;  
                     scrollbar-width: 0; 
@@ -74,7 +73,8 @@ class ContentScroll extends HTMLElement {
                 }
                 
                 .prev {
-                    -webkit-oreder: 1;
+                    opacity: 0;
+                    -webkit-order: 1;
                 }
                 
                 .next {
@@ -111,30 +111,49 @@ class ContentScroll extends HTMLElement {
             contentItem.album = album;
             horizonScroll.appendChild(contentItem); 
         })
-
+        
         // button scroll function
         const buttons = this.shadowDOM.querySelectorAll("button");
         buttons.forEach(button => {
             button.addEventListener("click", () => {
+                // button.className === "next" ? horizonScroll.scrollLeft += 1200 : horizonScroll.scrollLeft -= 1200;
                 const offset = button.className === "next" ? 1200 : -1200;
-                horizonScroll.scrollTo(offset, 0);
+
+
+                horizonScroll.scrollLeft += offset;
+                console.log(offset);
+                console.log(horizonScroll.scrollLeft + offset);
+                console.log(horizonScroll.scrollWidth -1200);
+                console.log(button.className);
+
+                const buttonPrev = this.shadowDOM.querySelector(".prev");
+                const buttonNext = this.shadowDOM.querySelector(".next");
+                (horizonScroll.scrollLeft + offset) >= (horizonScroll.scrollWidth - 1400) ? 
+                    buttonNext.style.opacity = 0 : buttonNext.style.opacity = 1;
+                
+                (horizonScroll.scrollLeft + offset) <= (0 + 500) ? 
+                    buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
             })
         })
-
+        
         // observe first and last content to hide button
-        const contentItem = this.shadowDOM.querySelectorAll("content-item");        
-        const firstCardObserver = new IntersectionObserver(entries => {
-            const firstCard = entries[0];
-            const lastCard = entries[entries.length -1];
-            const buttonPrev = this.shadowDOM.querySelector(".prev");
-            const buttonNext = this.shadowDOM.querySelector(".next");
+        // const contentItem = this.shadowDOM.querySelectorAll("content-item");        
+        // const firstCardObserver = new IntersectionObserver(entries => {
+        //     const firstCard = entries[0];
+        //     const buttonPrev = this.shadowDOM.querySelector(".prev");
+            
+        //     firstCard.isIntersecting ? buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
+        // })
+        
+        // const lastCardObserver = new IntersectionObserver(entries => {
+        //     const lastCard = entries[entries.length -1];
+        //     const buttonNext = this.shadowDOM.querySelector(".next");
+        //     lastCard.isIntersecting ? buttonNext.style.opacity = 0 : buttonNext.style.opacity = 1;
+            
+        // })  
 
-            firstCard.isIntersecting ? buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
-            lastCard.isIntersecting ? buttonNext.style.opacity = 0 : buttonNext.style.opacity = 1;
-        })
-
-        firstCardObserver.observe(contentItem[0]);
-        firstCardObserver.observe(contentItem[contentItem.length - 1])
+        // firstCardObserver.observe(contentItem[0]);
+        // lastCardObserver.observe(contentItem[contentItem.length - 1])
 
     }
 
