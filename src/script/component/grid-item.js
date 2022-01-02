@@ -19,6 +19,12 @@ class GridItem extends HTMLElement {
                 :host {
                     width: 180px;
                     margin: 5px;
+                    opacity: 0;
+                    transition: 300ms ease-in;
+                }
+                
+                :host(.show) {
+                    opacity: 1;
                 }
 
                 .album-wrap {
@@ -37,7 +43,6 @@ class GridItem extends HTMLElement {
                 }
                 
                 .episode {
-                    z-index: 1;
                     margin: 0;
                     padding: 5px 0px 5px 10px;
                     width: 100%;

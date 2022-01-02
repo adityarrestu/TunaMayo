@@ -2,6 +2,8 @@ import './component/app-bar.js';
 import './component/slider-album.js';
 import './component/content-scroll.js';
 import './component/grid-content.js';
+import './component/filter-tag.js';
+// import filteredAlbums from './component/filter.js';
 import albums from './component/albums.js';
 import featuredAlbums from './component/featured-album.js';
 
@@ -18,6 +20,6 @@ const contentScrollNew = document.createElement("content-scroll");
 contentScrollNew.albums = albums;
 main.appendChild(contentScrollNew);
 
-const gridContent =  document.createElement("grid-content");
-gridContent.albums = albums;
-main.appendChild(gridContent);
+const filterTag = document.createElement("filter-tag");
+main.appendChild(filterTag);
+

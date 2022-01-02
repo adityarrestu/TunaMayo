@@ -31,9 +31,8 @@ let albums = [
         rate: '9.7',
         year: '2021',
         tag: [
-            "Original",
-            "Fantasi",
-            "Musik",
+            "Manga",
+            "Aksi",
             "Remaja Laki-laki",
             "Bahasa Jepang"
         ],
@@ -41,7 +40,7 @@ let albums = [
     },
     {
         id: 3,
-        title: 'Takt op. Destiny',
+        title: 'Atttack on Titan OAD',
         titleImg: './src/img/takt-op.svg',
         poster: './src/img/Attack on Titan OAD.jpg',
         background: './src/img/Attack on Titan OAD Banner.webp',
@@ -51,17 +50,17 @@ let albums = [
         rate: '9.7',
         year: '2021',
         tag: [
-            "Original",
+            "Manga",
             "Fantasi",
-            "Musik",
             "Remaja Laki-laki",
+            "Militer",
             "Bahasa Jepang"
         ],
         statusAlbum: 'Baru Tayang'
     },
     {
         id: 4,
-        title: 'Takt op. Destiny',
+        title: 'Mushoku Tensei',
         titleImg: './src/img/takt-op.svg',
         poster: './src/img/Mushoku Tensei.jpg',
         background: './src/img/Mushoku Tensei Banner.jpg',
@@ -81,7 +80,7 @@ let albums = [
     },
     {
         id: 5,
-        title: 'Takt op. Destiny',
+        title: 'Ranking of Kings',
         titleImg: './src/img/takt-op.svg',
         poster: './src/img/Oosama Ranking.jpg',
         background: './src/img/Oosama Ranking Banner.jpg',
@@ -101,7 +100,7 @@ let albums = [
     },
     {
         id: 6,
-        title: 'Takt op. Destiny',
+        title: 'Mieruko-chan',
         titleImg: './src/img/takt-op.svg',
         poster: './src/img/Mieruko-chan.webp',
         background: './src/img/Mieruko-chan Banner.webp',
@@ -111,10 +110,11 @@ let albums = [
         rate: '9.7',
         year: '2021',
         tag: [
-            "Original",
-            "Fantasi",
-            "Musik",
-            "Remaja Laki-laki",
+            "Manga",
+            "Horror",
+            "Remaja Perempuan",
+            "Misteri",
+            "Sekolah",
             "Bahasa Jepang"
         ],
         statusAlbum: 'Baru Tayang'
@@ -131,9 +131,10 @@ let albums = [
         rate: '9.7',
         year: '2021',
         tag: [
-            "Original",
+            "Manga",
             "Fantasi",
-            "Musik",
+            "Aksi",
+            "Romance",
             "Remaja Laki-laki",
             "Bahasa Jepang"
         ],
@@ -237,7 +238,7 @@ let albums = [
             "Remaja Laki-laki",
             "Bahasa Jepang"
         ],
-        statusAlbum: ''
+        statusAlbum: 'Baru Tayang'
     },
 ];    
 

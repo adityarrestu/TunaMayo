@@ -123,10 +123,10 @@ class ContentScroll extends HTMLElement {
 
                 const buttonPrev = this.shadowDOM.querySelector(".prev");
                 const buttonNext = this.shadowDOM.querySelector(".next");
-                (horizonScroll.scrollLeft + offset) >= (horizonScroll.scrollWidth - 1400) ? 
+                (horizonScroll.scrollLeft + offset) >= (horizonScroll.scrollWidth - 1200) ? 
                     buttonNext.style.opacity = 0 : buttonNext.style.opacity = 1;
                 
-                (horizonScroll.scrollLeft + offset) <= (0 + 500) ? 
+                (horizonScroll.scrollLeft + offset) <= (0 + 400) ? 
                     buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
             })
         })
