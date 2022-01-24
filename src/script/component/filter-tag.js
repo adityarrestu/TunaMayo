@@ -1,7 +1,6 @@
 import './grid-content.js';
-import albums from "./albums.js";
-import tag from "./tag.js";
-import featuredAlbums from './featured-album.js';
+import albums from "../collection/albums.js";
+import tag from "../collection/tag.js";
 
 class FilterTag extends HTMLElement {
     constructor() {
@@ -15,80 +14,8 @@ class FilterTag extends HTMLElement {
 
     render() {
         this.shadowDOM.innerHTML = `
-            <style>
-                *, *::before, *::after {
-                    box-sizing: border-box;
-                    font-family: Roboto, sans serif;
-                }
-
-                :host {
-                    position: sticky;
-                    top: 55px;
-                    width: 100%;
-                    height: 60px;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background: rgba(0, 0, 0, 0);
-                }
-
-                button {
-                    width: 40px;
-                    height: 37px;
-                    background: none;
-                    border: none;
-                    font-size: 3rem;
-                    transform: translateY(-50%);
-                    color: rgba(255, 255, 255, 0.7);
-                    cursor: pointer;
-                    border-radius: .25rem;
-                    padding: 0 .5rem;
-                    align-self: center;
-                }
-                
-                .prev {
-                    -webkit-order: 1;
-                    opacity: 0;
-                }
-
-                .next {
-                    -webkit-order: 3;
-                }
-
-                .tag-container {
-                    width: 80%;
-                    height: 100%;
-                    padding: 5px;
-                    display: flex;
-                    align-items: center;
-                    overflow: hidden;
-                    scroll-behavior: smooth;
-                    -webkit-order: 2;
-                }
-
-                .tag-container::-webkit-scrollbar {
-                    display: none;
-                }
-                
-                .tag-item {
-                    margin-right: 8px;
-                    padding: 5px 8px;
-                    background: rgba(255, 255, 255, .9);
-                    border-radius: 8px;
-                    text-align: center;
-                    white-space: nowrap;
-                    color: rgba(0, 0, 0, .7);
-                    cursor: pointer;
-                    transition: 500ms ease;
-                }
-                
-                .tag-item.data-active {
-                    background: #3E96DB;
-                    color: #ffffff;
-                    transition: 500ms ease;
-                }
-            </style>
-
+            <link rel="stylesheet" href="./src/style/filter-tag.css">
+            
             <button class="prev">&#8249;</button>
             <button class="next">&#8250;</button>
 
@@ -103,7 +30,7 @@ class FilterTag extends HTMLElement {
             tagContainer.appendChild(tagItem);
         })
         
-        const main = document.querySelector("main");
+        const main = document.querySelector(".content");
         const gridContent = document.createElement("grid-content");
         const tagItem = this.shadowDOM.querySelectorAll(".tag-item");
         tagItem[0].classList.add("data-active");
@@ -144,11 +71,11 @@ class FilterTag extends HTMLElement {
 
                 const buttonPrev = this.shadowDOM.querySelector(".prev");
                 const buttonNext = this.shadowDOM.querySelector(".next");
-                (tagContainer.scrollLeft + offset) >= (tagContainer.scrollWidth - 800) ? 
-                    buttonNext.style.opacity = 0 : buttonNext.style.opacity = 1;
-                
-                (tagContainer.scrollLeft + offset) <= (0 + 100) ? 
-                    buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
+                (tagContainer.scrollLeft + offset) >= (tagContainer.scrollWidth - 1100) ?
+                    buttonNext.classList.add("hidden") : buttonNext.classList.remove("hidden");
+                    
+                (tagContainer.scrollLeft + offset) <= (0 + 100) ?
+                    buttonPrev.classList.remove("appear") : buttonPrev.classList.add("appear");
             })
         })
 

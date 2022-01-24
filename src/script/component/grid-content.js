@@ -1,3 +1,4 @@
+import { routeAlbum } from '../main.js';
 import './grid-item.js';
 
 class GridContent extends HTMLElement {
@@ -18,11 +19,6 @@ class GridContent extends HTMLElement {
     render() {
         this.shadowDOM.innerHTML = `
             <style>
-                *, *::before, *::after {
-                    box-sizing: border-box;
-                    font-family: Roboto, sans serif;
-                }
-
                 :host {
                     width: 100%;
                     height: 100%;
@@ -35,11 +31,11 @@ class GridContent extends HTMLElement {
                 
                 .grid-wrap {
                     min-width: 86%;
-                    height: 95vh;
-                    margin: 0 5% 0 5%;
+                    height: 630px;
+                    margin: 15px 0 0 0;
                     display: grid;
                     grid-template-columns: repeat(auto-fill, minmax(190px, 0.8fr));
-                    grid-gap: 5px 10px;
+                    grid-gap: 5px 6px;
                     justify-content: space-between;
                     overflow: hidden;
                     box-shadow: 0px -20px 12px rgba(17, 19, 25, .5) inset;
@@ -82,6 +78,73 @@ class GridContent extends HTMLElement {
                 .more.hidden {
                     display: none;
                 }
+
+                @media (min-width: 2040px) {
+                    .grid-wrap {
+                        width: 100%;
+                    }
+                }
+
+                @media (min-width: 985px) and (max-width: 1270px) {
+                    :host {
+                        width: 900px;
+                        align-self: center;
+                    }
+
+                    .grid-wrap {
+                        grid-template-columns: repeat(auto-fill, minmax(170px, 0.8fr));
+                        grid-gap: 2px 3px;
+                        width: 100%px;
+                        height: 585px;
+                        align-self: center;
+                    }
+                }
+
+                @media (min-width: 768px) and (max-width: 984px) {
+                    :host {
+                        width: 100%;
+                        align-self: right;
+                    }
+
+                    .grid-wrap {
+                        grid-template-columns: repeat(auto-fill, minmax(170px, 0.8fr));
+                        grid-gap: 2px 3px;
+                        max-width: 100%;
+                        height: 100%;
+                        align-self: center;
+                    }
+                    
+                }
+                
+                @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+                    .grid-wrap {
+                        grid-template-columns: repeat(auto-fill, minmax(170px, 0.8fr));
+                        grid-gap: 5px 3px;
+                    }                  
+                    
+                    .more {
+                        display: none;
+                    }
+                }
+
+                @media (min-width: 320px) and (max-width: 767px) {
+                    :host {
+                        width: 100%;
+                        align-self: right;
+                    }
+                    
+                    .grid-wrap {
+                        grid-template-columns: repeat(auto-fill, minmax(100px, 0.8fr));
+                        grid-gap: 5px 3px;
+                        max-width: 100%;
+                        height: 100%;
+                        align-self: center;
+                    }
+
+                    .more {
+                        display: none;
+                    }
+                }
             </style>
             
             <section class="not-found">Album tidak ditemukan</section>
@@ -101,6 +164,11 @@ class GridContent extends HTMLElement {
                 const gridItem = document.createElement("grid-item");
                 gridItem.album = album;
                 gridAlbum.appendChild(gridItem);
+
+                // route to play page from content item function
+                gridItem.addEventListener("click", () => {
+                    routeAlbum(album);
+                })
             })
         }
 
@@ -110,7 +178,7 @@ class GridContent extends HTMLElement {
                 entry.target.classList.toggle("show", entry.isIntersecting); 
                 if (entry.isIntersecting) observer.unobserve(entry.target); // berhenti observe
             })
-            console.log(entries);
+
         }, {
             // threshold: 1,
             rootMargin: "100px",

@@ -1,0 +1,36 @@
+.content-container > button {
+    width: 28px;
+    height: 60px;
+    padding: 5px;
+    background: none;
+    border: none;
+    font-size: 60px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    border-radius: .25rem;
+    text-align: center;
+}
+
+.prev {
+    opacity: 0;
+    cursor: default;
+    order: 1;
+    -webkit-order: 1;
+}
+
+.next {
+    order: 3;
+    -webkit-order: 3;
+}
+
+button:hover,
+button:active {
+    color: #ffffff;
+}
+
+@media screen and (max-width: 600px) {
+    .content-container > button {
+        display: none;
+    }
+}

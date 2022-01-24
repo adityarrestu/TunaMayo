@@ -1,3 +1,4 @@
+import { routeAlbum } from '../main.js';
 import './content-item.js';
 
 class ContentScroll extends HTMLElement {
@@ -15,37 +16,33 @@ class ContentScroll extends HTMLElement {
         this.render();
     }
 
+    set title(title) {
+        this._title = title;
+        this.render();
+    }
+
     render() {
         this.shadowDOM.innerHTML = `
             <style>
-                *, *::before, *::after {
-                    box-sizing: border-box;
-                    font-family: Roboto, sans serif;
-                }
-                
                 :host {
                     z-index: 7;
                     position: relative;
-                    width: 100%;
-                    height: 280px;
-                    top: -3vh;
+                    max-width: 1360px;
+                    height: 260px;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7), #111319);
                 }
-                
+
                 .flex-container {
-                    max-width: 96%;
-                    margin: 0px 20px;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                 }
-
+                
                 .horizontal-scroll {
                     max-height: 100%;
-                    max-width: 98%;
+                    max-width: 1180px;
                     margin: 0px 10px;
                     display: flex;
                     overflow-x: hidden;
@@ -55,22 +52,20 @@ class ContentScroll extends HTMLElement {
                     -webkit-order: 2;
                 }
 
-                
                 .horizontal-scroll::-webkit-scrollbar {
                     display: none;
                 }
                 
                 button {
-                    width: 40px;
-                    height: 95px;
+                    width: 28px;
+                    height: 80px;
                     background: none;
                     border: none;
-                    font-size: 5rem;
+                    font-size: 60px;
                     transform: translateY(-50%);
                     color: rgba(255, 255, 255, 0.7);
                     cursor: pointer;
                     border-radius: .25rem;
-                    padding: 0 .5rem;
                 }
                 
                 .prev {
@@ -88,14 +83,91 @@ class ContentScroll extends HTMLElement {
                 }
 
                 h2 {
-                    width: 88%;
-                    margin: 10px 10%;
-                    font-size: 24px;
+                    margin: 6px 0;
+                    padding: 0 50px;
+                    font-size: 20px;
+                    font-weight: 500;
                     color: #ffffff;
+                    align-self: flex-start;
+                }
+
+                @media (min-width: 2040px) {
+                    :host {
+                        max-width: 1770px;
+                    }
+
+                    .horizontal-scroll {
+                        max-width: 1770px;
+                    }
+
+                    h2 {
+                        padding: 0 10px;
+                    }
+                }
+
+                @media (min-width: 1025px) and (max-width: 1270px) {
+                    :host {
+                        max-width: 100%;
+                    }   
+
+                    .horizontal-scroll {
+                        max-width: 885px;
+                    }   
+                }
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    :host {
+                        max-width: 100%;
+                    }
+                    
+                    .flex-container {
+                        width: 100%;
+                        justify-content: flex-start;
+                    }
+
+                    .horizontal-scroll {
+                        max-width: 100%;
+                        overflow-x: scroll;
+                    }
+
+                    h2 {
+                        padding: 0 20px;
+                    }
+
+                    button {
+                        display: none;
+                    }
+                }
+
+                @media (min-width: 320px) and (max-width: 767px) {
+                    :host {
+                        max-width: 100%;
+                        height: 120px;
+                    }
+                    
+                    .flex-container {
+                        width: 100%;
+                        justify-content: flex-start;
+                    }
+
+                    .horizontal-scroll {
+                        max-width: 100%;
+                        overflow-x: scroll;
+                        margin: 0 0 0 5px;
+                    }
+
+                    h2 {
+                        padding: 0 10px;
+                        font-size: 10px;
+                    }
+
+                    button {
+                        display: none;
+                    }
                 }
             </style>
             
-            <h2>Baru Tayang</h2>
+            <h2>${this._title}</h2>
 
             <section class="flex-container">
                 <button class="prev">&#8249;</button>
@@ -114,20 +186,37 @@ class ContentScroll extends HTMLElement {
             horizonScroll.appendChild(contentItem); 
         })
         
+        let mediaMid = window.matchMedia('(min-width:  985px) and (max-width: 1270px)');
+        let mediaLarge = window.matchMedia('(min-width: 1270px');
+        let scrollValue;
+        if (mediaMid.matches) {
+            scrollValue = 885;
+        } else if (mediaLarge.matches) {
+            scrollValue = 1180;
+        }
+
         // button scroll function
         const buttons = this.shadowDOM.querySelectorAll("button");
         buttons.forEach(button => {
             button.addEventListener("click", () => {
-                const offset = button.className === "next" ? 1200 : -1200;
+                const offset = button.className === "next" ? scrollValue : -(scrollValue);
                 horizonScroll.scrollLeft += offset;
 
                 const buttonPrev = this.shadowDOM.querySelector(".prev");
                 const buttonNext = this.shadowDOM.querySelector(".next");
-                (horizonScroll.scrollLeft + offset) >= (horizonScroll.scrollWidth - 1200) ? 
+                (horizonScroll.scrollLeft + offset) >= (horizonScroll.scrollWidth - 1180) ? 
                     buttonNext.style.opacity = 0 : buttonNext.style.opacity = 1;
                 
                 (horizonScroll.scrollLeft + offset) <= (0 + 400) ? 
                     buttonPrev.style.opacity = 0 : buttonPrev.style.opacity = 1;
+            })
+        })
+
+        const contentItem = this.shadowDOM.querySelectorAll("content-item");
+        const arrayContent = [...contentItem];
+        arrayContent.forEach(content => {
+            content.addEventListener("click", () => {
+                routeAlbum(this._albums[arrayContent.indexOf(content)]);
             })
         })
 

@@ -1,0 +1,138 @@
+:host {
+    position: sticky;
+    top: 50px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(17, 19, 25, .5);
+}
+
+button {
+    width: 40px;
+    height: 35px;
+    margin: 0px 8px;
+    background: none;
+    border: none;
+    font-size: 50px;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    border-radius: .25rem;
+    align-self: center;
+}
+
+.prev {
+    order: 1;
+    -webkit-order: 1;
+    opacity: 0;
+    cursor: default;
+}
+
+.next {
+    order: 3;
+    -webkit-order: 3;
+}
+
+.hidden {
+    opacity: 0;
+    cursor: default;
+}
+
+.appear {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.tag-container {
+    max-width: 1155px;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    -webkit-order: 2;
+    order: 2;
+}
+
+.tag-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tag-item {
+    margin-right: 8px;
+    padding: 5px 8px;
+    background: rgba(255, 255, 255, .9);
+    border-radius: 8px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 14px;
+    color: rgba(0, 0, 0, .7);
+    cursor: pointer;
+    transition: 500ms ease;
+}
+
+.tag-item:last-child {
+    margin: 0;
+}
+
+.tag-item.data-active {
+    background: #3E96DB;
+    color: #ffffff;
+    transition: 500ms ease;
+}
+
+@media (min-width: 2040px) {
+    .tag-container {
+        max-width: 1770px;
+    }
+}
+
+@media (min-width: 985px) and (max-width: 1270px) {
+    .tag-container {
+        width: 850px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .tag-container {
+        max-width: 95%;
+        overflow-x: scroll;
+        align-self: flex-end;
+    }
+
+    button {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .tag-container {
+        max-width: 1300px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    :host {
+        top: 90px;
+        height: 20px;
+    }
+    
+    .tag-item {
+        max-width: 300px;
+        margin-right: 5px;
+        padding: 2px 4px;
+        font-size: 8px;
+        border-radius: 4px;
+    }
+
+    button {
+        display: none;
+    }
+    
+    .tag-container {
+        overflow: scroll;
+    }
+}

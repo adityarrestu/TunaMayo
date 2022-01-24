@@ -1,4 +1,5 @@
-import './slider-item.js'
+import { routeAlbum } from '../main.js';
+import './slider-item.js';
 
 class SliderAlbum extends HTMLElement {
 
@@ -18,15 +19,16 @@ class SliderAlbum extends HTMLElement {
 
     render() {
         this.shadowDOM.innerHTML = `
-            <style>
-                *, *::before, *::after {
-                    box-sizing: border-box;
-                }
-                
+            <style>      
+                : host {
+                    position: relative;
+                    top: 50;
+                    align-self: center;
+                }   
+
                 .carousel {
-                    top: 60px;
                     width: 100%;
-                    height: 91vh;
+                    height: 650px;
                     position: relative;
                     overflow: hidden;
                 }
@@ -41,13 +43,12 @@ class SliderAlbum extends HTMLElement {
                     z-index: 4;
                     background: none;
                     border: none;
-                    font-size: 5rem;
+                    font-size: 70px;
                     top: 50%;
                     transform: translateY(-50%);
                     color: rgba(255, 255, 255, 0.7);
                     cursor: pointer;
                     border-radius: .25rem;
-                    padding: 0 .5rem;
                 }
                 
                 .carousel > button:hover,
@@ -56,19 +57,18 @@ class SliderAlbum extends HTMLElement {
                 }
                 
                 .prev {
-                    left: 1rem;
+                    left: 40px;
                 }
                 
                 .next {
-                    right: 1rem;
+                    right: 40px;
                 }
 
                 /* shadow */
                 .shadow {
                     z-index: 2;
                     position: absolute;
-                    height: 91vh;
-                    top: 60px;
+                    height: 650px;
                     right: 0px;
                     left: 0px;
                 }
@@ -93,13 +93,13 @@ class SliderAlbum extends HTMLElement {
                     z-index: 5;
                     position: absolute;
                     display: flex;
-                    top: 80%;
-                    left: 8%;
+                    top: 530px;
+                    left: 100px;
                 }
 
                 .slide-icon {
-                    width: 10px;
-                    height: 10px;
+                    width: 8px;
+                    height: 8px;
                     margin-right: 5px;
                     background: rgba(255, 255, 255, .3);
                     transition: 500ms;
@@ -107,7 +107,7 @@ class SliderAlbum extends HTMLElement {
                 }
 
                 .slide-icon.active {
-                    width: 14px;
+                    width: 12px;
                     background: rgba(255, 255, 255, 1);
                     transition: 500ms;
                     transition-delay: 300ms;
@@ -117,13 +117,13 @@ class SliderAlbum extends HTMLElement {
                     z-index: 5;
                     position: absolute;
                     display: flex;
-                    top: 65%;
-                    left: 7%;
+                    top: 420px;
+                    left: 85px;
                 }
 
                 .round {
-                    width: 60px;
-                    height: 60px;
+                    width: 55px;
+                    height: 55px;
                     margin: 10px;
                     border: none;
                     border-radius: 50%;
@@ -137,6 +137,79 @@ class SliderAlbum extends HTMLElement {
                 .plus {
                     background: #ffffff;
                 }
+
+                .play img {
+                    width: 50%;
+                    object-fit: cover;
+                    padding: 10% 0 0 12%;
+                }
+
+                .plus img {
+                    width: 70%;
+                    object-fit: cover;
+                }
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    .nav-icon {
+                        top: 550px;
+                        left: initial;
+                        right: 30px;
+                    }
+
+                    .prev, .next {
+                        display: none;
+                    }
+
+                    .featured-button {
+                        top: 480px;
+                        left: initial;
+                        right: 30px;
+                    }
+
+                    .round {
+                        width: 40px;
+                        height: 40px;
+                        margin: 0 0 0 5px;
+                    }
+                }
+
+                @media (min-width: 320px) and (max-width: 767px) {
+                    .carousel {
+                        height: 550px;
+                    }
+
+                    .nav-icon {
+                        top: 510px;
+                        left: initial;
+                        right: 10px;
+                    }
+
+                    .slide-icon {
+                        width: 5px;
+                        height: 5px;
+                    }
+
+                    .slide-icon.active {
+                        width: 8px;
+                    }
+
+                    .prev, .next {
+                        display: none;
+                    }
+
+                    .featured-button {
+                        top: 420px;
+                        left: initial;
+                        right: 10px;
+                        flex-direction: column;
+                    }
+
+                    .round {
+                        width: 30px;
+                        height: 30px;
+                        margin: 5px 0;
+                    }
+                }
             </style>
 
             <div class="shadow">
@@ -149,16 +222,21 @@ class SliderAlbum extends HTMLElement {
                 <button class="next">&#8250;</button>
                 <div class="slider"></div>            
                 <div class="nav-icon"></div>
+                
+                <div class="featured-button">
+                    <a class="play-url">
+                        <button class="round play">
+                            <img src="./src/img/icon/play.png" alt="play">
+                        </button>
+                    </a>
+                    <a href="#">
+                        <button class="round plus">
+                            <img src="./src/img/icon/collection_1.png" alt="play">
+                        </button>            
+                    </a>
+                </div>
             </div>
             
-            <div class="featured-button">
-                <a class="play-url">
-                    <button class="round play"></button>
-                </a>
-                <a href="">
-                    <button class="round plus"></button>            
-                </a>
-            </div>
         `;
 
         // create slide
@@ -169,11 +247,6 @@ class SliderAlbum extends HTMLElement {
             slider.appendChild(sliderItem);
             sliderItem.classList.add("slide");
         })
-
-        // album url handler
-        const albumsHandle = this._albums;
-        const linkAlbum = this.shadowDOM.querySelector(".play-url");
-        linkAlbum.setAttribute("href", albumsHandle[0].urlAlbum);
 
         // give active class to slide
         const sliderItem = slider.querySelectorAll("slider-item");
@@ -191,6 +264,7 @@ class SliderAlbum extends HTMLElement {
         const arrayIcon = [...sliderIcon]; 
         arrayIcon[0].classList.add("active");       
 
+        let linkAlbum;
         // slider change function
         let changeSlide = offset => {
             const activeData = slider.querySelector("slider-item.data-active");
@@ -207,8 +281,8 @@ class SliderAlbum extends HTMLElement {
             arrayIcon[newIndex].classList.add("active");
             actveIcon.classList.remove("active");
 
-            // url album change
-            linkAlbum.setAttribute("href", albumsHandle[newIndex].urlAlbum);
+            // link album
+            linkAlbum = this._albums[arraySlider.indexOf(activeData)];
         }
 
         // loop slider
@@ -217,7 +291,6 @@ class SliderAlbum extends HTMLElement {
             playSlider = setInterval(function () {
                 
                 changeSlide(1);
-
             }, 5000)
         }
         repeater();
@@ -234,7 +307,14 @@ class SliderAlbum extends HTMLElement {
                 repeater();
             })
         })
-                
+
+        // play url
+        const playUrl = this.shadowDOM.querySelector(".play-url");
+        playUrl.addEventListener("click", () => {
+            routeAlbum(linkAlbum);
+            changeSlide(10);
+        })
+
     };
 
 }

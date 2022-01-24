@@ -1,0 +1,36 @@
+:host {
+    position: relative;
+    top: 120px;
+    width: 100%;
+    background: #232428;
+    display: flex;
+    justify-content: space-evenly;
+    color: #ffffff;
+}
+
+:host section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+}
+
+section p {
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+section p:hover {
+    color: #3e96db;
+    transition: 200ms ease-in;
+}
+
+.contact-icon img {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    :host {
+        display: none;
+    }
+}

@@ -1,8 +1,11 @@
+import { routeHome } from '../main.js';
+import './search-bar.js';
+
 class AppBar extends HTMLElement {
 
     constructor() {
         super();
-        this._shadowDOM = this.attachShadow({mode: "closed"});
+        this.shadowDOM = this.attachShadow({mode: "closed"});
     }
 
     connectedCallback() {
@@ -10,23 +13,14 @@ class AppBar extends HTMLElement {
     }
 
     render() {
-        this._shadowDOM.innerHTML = `
-        <style>
-            * {
-                margin: 0px;
-                padding: 0px;
-                box-sizing: border-box;
-                font-family: Roboto, sans-serif;
-                font-weight: 500;
-            }
-            
-
+        this.shadowDOM.innerHTML = `
+        <style>       
             :host {
                 z-index: 17;
                 position: fixed;
                 display: flex;
                 width: 100%;
-                height: 60px;
+                height: 50px;
                 left: 0px;
                 top: 0px;
                 justify-content: space-between;
@@ -50,6 +44,10 @@ class AppBar extends HTMLElement {
                 color: #FFFFFF;
                 transition: all 0.3s ease 0s;
             }
+
+            nav a {
+                cursor: pointer;
+            }
             
             nav a:hover {
                 color: #3E96DB;
@@ -60,22 +58,94 @@ class AppBar extends HTMLElement {
                 height: 25px;
                 cursor: pointer;
             }
+
+            .right-nav {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+                margin-right: 20px;
+                overflow: visible;
+            }
+
+            .right-nav .history,
+            .right-nav .user {
+                width: 35px;
+                height: 35px;
+                margin-left: 20px;
+                background:  rgba(68, 69, 72, 1);
+                border-radius: 20px;
+                cursor: pointer;
+                order: 2;
+            }
+
+            .right-nav .history img {
+                padding: 25% 0 0 20%;
+                width: 20px;
+            }
+
+            .right-nav .user img {
+                padding: 15% 0 0 20%;
+                width: 20px;
+            }
+
+            /*
+            @media (min-width: 320px) and (max-width: 757px) {
+                :host {
+                    height: 80px;
+                }
+
+                .logo {
+                    width: auto;
+                    height: 15px;
+                    align-self: start;
+                }
+
+                .left-nav {
+                    flex-direction: column;
+                }
+
+                nav, ul, li, a {
+                    font-size: 12px;
+                }
+            }
+            */
         </style>
 
         <div class="left-nav">
 
-            <img class="logo" src="../src/img/logo.svg" alt="tunamayo">
+            <img class="logo link-home" src="../src/img/logo.svg" alt="tunamayo">
         
             <nav>
                 <ul>
-                    <li><a href="#">Movie</a></li>
-                    <li><a href="#">Drama</a></li>
-                    <li><a href="#">Anime</a></li>
+                    <li><a class="link-home">Movie</a></li>
+                    <li><a class="link-home">Drama</a></li>
+                    <li><a class="link-home">Anime</a></li>
                 </ul>
             </nav>
+        </div>
+        <div class="right-nav">
+            <div class="history">
+                <img src="./src/img/icon/history.png">
+            </div>
+
+            <div class="user">
+                <img src="./src/img/icon/user.png">
+            </div>
             
         </div>
         `;
+
+        const linkHome = this.shadowDOM.querySelectorAll(".link-home");
+        linkHome.forEach(link => {
+            link.addEventListener("click", () => {
+                routeHome();
+            })
+        })
+
+        const rightNav = this.shadowDOM.querySelector(".right-nav");
+        const searchBar = document.createElement("search-bar");
+        rightNav.appendChild(searchBar);
     }
 }
 
