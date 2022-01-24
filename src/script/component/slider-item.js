@@ -27,6 +27,7 @@ class SliderItem extends HTMLElement {
                 
                 :host(.data-active) {
                     opacity: 1;
+                    transition: 200ms opacity ease-in-out;
                     transition-delay: 200ms;
                 }
 
