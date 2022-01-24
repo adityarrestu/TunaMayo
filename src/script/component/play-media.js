@@ -368,16 +368,7 @@ class PlayMedia extends HTMLElement {
                 title.textContent = `${this._albums.title} Episode ${this._albums.episodeList[index].id}`;
             })
         })
-
-        const collection = this.shadowDOM.querySelector(".collection");
-        collection.addEventListener("click", () => {
-            console.log("ditekan..")
-            videoPlayer.setAttribute("src", '');
-        })
-
-        function stopVideo() {
-            videoPlayer.setAttribute("src", '');
-        }
+        
     }
 }
 

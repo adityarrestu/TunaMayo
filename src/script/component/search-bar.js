@@ -171,6 +171,7 @@ class SearchBar extends HTMLElement {
         const mediaSmall = window.matchMedia('(max-width: 425px');
         if (mediaSmall.matches) {
             searchButton.addEventListener("click", () => {
+                console.log("ditekan..")
                 this.className === "show-bar" ?
                     this.classList.remove("show-bar") :
                     this.classList.add("show-bar");

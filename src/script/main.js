@@ -6,6 +6,7 @@ import './component/filter-tag.js';
 import './component/carousel-album.js'
 import './component/play-media.js';
 import './component/footer-bar.js';
+import './component/nav-bottom.js';
 import albums from './collection/albums.js';
 import featuredAlbums from './collection/featured-album.js';
 
@@ -47,6 +48,11 @@ main.appendChild(albumPage);
 // video player page
 const playMedia = document.createElement("play-media");
 main.appendChild(playMedia);
+playMedia.classList.add("hidden");
+
+// nav bottom
+const navBottom = document.createElement("nav-bottom");
+main.appendChild(navBottom);
 
 // hidden home page
 function hiddenChildElement() {
@@ -63,8 +69,10 @@ function showChildElement() {
 // route to home page
 export function routeHome() {
     // stop video player
-    const videoPlayer = playMedia.shadowRoot.getElementById("video-player");
-    videoPlayer.setAttribute("src", '');
+    if (playMedia.className !== "hidden") {
+        const videoPlayer = playMedia.shadowRoot.getElementById("video-player");
+        videoPlayer.setAttribute("src", '');
+    }
 
     // hidden album page or media player page
     albumPage.classList.add("hidden") || playMedia.classList.add("hidden");

@@ -94,28 +94,6 @@ class AppBar extends HTMLElement {
                 padding: 15% 0 0 20%;
                 width: 20px;
             }
-
-            /*
-            @media (min-width: 320px) and (max-width: 757px) {
-                :host {
-                    height: 80px;
-                }
-
-                .logo {
-                    width: auto;
-                    height: 15px;
-                    align-self: start;
-                }
-
-                .left-nav {
-                    flex-direction: column;
-                }
-
-                nav, ul, li, a {
-                    font-size: 12px;
-                }
-            }
-            */
         </style>
 
         <div class="left-nav">
@@ -130,6 +108,7 @@ class AppBar extends HTMLElement {
                 </ul>
             </nav>
         </div>
+
         <div class="right-nav">
             <div class="history">
                 <img src="./src/img/icon/history.png">
