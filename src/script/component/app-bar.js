@@ -114,7 +114,7 @@ class AppBar extends HTMLElement {
 
         <div class="left-nav">
 
-            <img class="logo link-home" src="../src/img/logo.svg" alt="tunamayo">
+            <img class="logo link-home" src="../src/img/logo.png" alt="tunamayo">
         
             <nav>
                 <ul>
