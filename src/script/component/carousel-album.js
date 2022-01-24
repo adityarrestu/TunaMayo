@@ -17,8 +17,6 @@ class CarouselAlbum extends HTMLElement {
     }
 
     render() {
-        console.log(this._albums);
-
         this.shadowDOM.innerHTML = `
             <link rel="stylesheet" href="./src/style/tag-list.css">
             <link rel="stylesheet" href="./src/style/button-scroll.css">
@@ -406,8 +404,6 @@ class CarouselAlbum extends HTMLElement {
         const playBtn = this.shadowDOM.querySelector(".play");
         playBtn.addEventListener("click", () => {
             routePlay(this._albums, 0);
-
-            console.log("ditekan..");
         })
 
         // route to play page from content item function

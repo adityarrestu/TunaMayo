@@ -3,7 +3,7 @@ import albums from "../collection/albums.js";
 class PlayMedia extends HTMLElement {
     constructor() {
         super();
-        this.shadowDOM = this.attachShadow({ mode: 'open' });
+        this.shadowDOM = this.attachShadow({ mode: "open" });
     }
 
     connectedCallback() {
@@ -20,7 +20,6 @@ class PlayMedia extends HTMLElement {
     }
 
     render() {
-        console.log(this._episodes);
         this.shadowDOM.innerHTML = `
             <link rel="stylesheet" href="./src/style/tag-list.css">
             <style>
@@ -310,7 +309,7 @@ class PlayMedia extends HTMLElement {
             </style>
 
             <section class="media-container">
-                <iframe class="video-player" src="${this._albums.episodeList[this._episodes].link}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+                <iframe class="video-player" id="video-player" src="${this._albums.episodeList[this._episodes].link}" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
             </section>
 
             <section class="info">
@@ -369,6 +368,16 @@ class PlayMedia extends HTMLElement {
                 title.textContent = `${this._albums.title} Episode ${this._albums.episodeList[index].id}`;
             })
         })
+
+        const collection = this.shadowDOM.querySelector(".collection");
+        collection.addEventListener("click", () => {
+            console.log("ditekan..")
+            videoPlayer.setAttribute("src", '');
+        })
+
+        function stopVideo() {
+            videoPlayer.setAttribute("src", '');
+        }
     }
 }
 

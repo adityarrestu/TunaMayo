@@ -32,7 +32,7 @@ class GridItem extends HTMLElement {
                     display: flex;
                     width: 180px;
                     height: 260px;
-                    background: url("${this._album.poster}") no-repeat center;
+                    background: url("${this._album.frontPoster}") no-repeat center;
                     background-size: cover;
                     border-radius: 10px;
                     align-items: flex-end;

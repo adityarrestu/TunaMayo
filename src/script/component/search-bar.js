@@ -13,6 +13,7 @@ class SearchBar extends HTMLElement {
 
     render() {
         this.shadowDOM.innerHTML = `
+            <link rel="stylesheet" href="./src/style/search-bar.css">
             <style>
                 :host {
                     max-width: 380px;
@@ -109,7 +110,7 @@ class SearchBar extends HTMLElement {
                 <div class="autocom-box">
                 </div>
             
-                <img src="./src/img/icon/search.png">
+                <img class="search-btn" src="./src/img/icon/search.png">
             </div>
         `;
 
@@ -166,6 +167,15 @@ class SearchBar extends HTMLElement {
             suggBox.innerHTML = listData;
         }
 
+        const searchButton = this.shadowDOM.querySelector(".search-btn");
+        const mediaSmall = window.matchMedia('(max-width: 425px');
+        if (mediaSmall.matches) {
+            searchButton.addEventListener("click", () => {
+                this.className === "show-bar" ?
+                    this.classList.remove("show-bar") :
+                    this.classList.add("show-bar");
+            })
+        }
     }
 }
 

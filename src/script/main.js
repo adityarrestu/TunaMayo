@@ -48,19 +48,25 @@ main.appendChild(albumPage);
 const playMedia = document.createElement("play-media");
 main.appendChild(playMedia);
 
-// remove
+// hidden home page
 function hiddenChildElement() {
     carousel.classList.add("hidden");
     content.classList.add("hidden");
 }
 
+// show home page
 function showChildElement() {
     carousel.classList.remove("hidden");
     content.classList.remove("hidden");
 }
 
 // route to home page
-export function routeHome() { 
+export function routeHome() {
+    // stop video player
+    const videoPlayer = playMedia.shadowRoot.getElementById("video-player");
+    videoPlayer.setAttribute("src", '');
+
+    // hidden album page or media player page
     albumPage.classList.add("hidden") || playMedia.classList.add("hidden");
     
     showChildElement();

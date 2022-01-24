@@ -58,7 +58,7 @@ class ContentScroll extends HTMLElement {
                 
                 button {
                     width: 28px;
-                    height: 80px;
+                    height: 60px;
                     background: none;
                     border: none;
                     font-size: 60px;

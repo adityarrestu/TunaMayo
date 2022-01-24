@@ -14,6 +14,7 @@ class AppBar extends HTMLElement {
 
     render() {
         this.shadowDOM.innerHTML = `
+        <link rel="stylesheet" href="./src/style/app-bar.css">
         <style>       
             :host {
                 z-index: 17;
@@ -37,7 +38,6 @@ class AppBar extends HTMLElement {
 
             nav, ul, li, a {
                 display: inline-block;
-                padding: 0px 13px;
                 text-decoration: none;
                 line-height: 21px;
                 list-style: none;
@@ -45,8 +45,13 @@ class AppBar extends HTMLElement {
                 transition: all 0.3s ease 0s;
             }
 
+            nav ul {
+                padding: 0;
+            }
+
             nav a {
                 cursor: pointer;
+                padding: 0px 13px;
             }
             
             nav a:hover {
@@ -56,6 +61,7 @@ class AppBar extends HTMLElement {
             .logo {
                 width: 136px;
                 height: 25px;
+                padding: 0 13px;
                 cursor: pointer;
             }
 
