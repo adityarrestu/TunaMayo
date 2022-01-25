@@ -103,7 +103,6 @@ class GridContent extends HTMLElement {
                 @media (min-width: 768px) and (max-width: 984px) {
                     :host {
                         width: 100%;
-                        align-self: right;
                     }
 
                     .grid-wrap {
@@ -124,6 +123,12 @@ class GridContent extends HTMLElement {
                     
                     .more {
                         display: none;
+                    }
+                }
+
+                @media screen and (max-width: 768px) {
+                    :host .grid-wrap {
+                        padding-bottom: 100px;
                     }
                 }
 

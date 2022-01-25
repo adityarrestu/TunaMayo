@@ -185,10 +185,10 @@ class SliderItem extends HTMLElement {
 
                 }
 
-                @media (min-width: 425px) and (max-width: 480px) {
+                @media (min-width: 320px) and (max-width: 480px) {
                     @keyframes movein {
-                        0% {opacity: 0%; right: -20%;}
-                        100% {opacity: 100%; right: 50px;}
+                        0% {opacity: 0%; left: 50%; transform: translate(100%, 0);}
+                        100% {opacity: 100%; left: 50%; transform: translate(-50%, 0);}
                     }
                 }
                 
@@ -198,23 +198,11 @@ class SliderItem extends HTMLElement {
                         top: 90px;
                     }
                 }
-                    
-                @media (min-width: 375px) and (max-width: 424px) {
-                    @keyframes movein {
-                        0% {opacity: 0%; right: -20%;}
-                        100% {opacity: 100%; right: 20px;}
-                    }
-                }
 
                 @media (min-width: 320px) and (max-width: 374px) {
                     :host .poster {
                         height: 420px;
                         top: 90px;
-                    }
-                    
-                    @keyframes movein {
-                        0% {opacity: 0%; right: -20%;}
-                        100% {opacity: 100%; right: 10px;}
                     }
                 }
 

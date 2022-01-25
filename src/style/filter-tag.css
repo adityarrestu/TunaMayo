@@ -116,15 +116,14 @@ button {
 
 @media (min-width: 320px) and (max-width: 767px) {
     :host {
-        top: 90px;
         height: 20px;
     }
     
     .tag-item {
         max-width: 300px;
         margin-right: 5px;
-        padding: 2px 4px;
-        font-size: 8px;
+        padding: 4px 8px;
+        font-size: 12px;
         border-radius: 4px;
     }
 
@@ -133,6 +132,6 @@ button {
     }
     
     .tag-container {
-        overflow: scroll;
+        overflow-x: scroll;
     }
 }

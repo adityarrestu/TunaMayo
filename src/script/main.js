@@ -68,7 +68,6 @@ const popUp = () => {
     }, 2200);
 }
 
-
 // hidden home page function
 function hiddenChildElement() {
     carousel.classList.add("hidden");
@@ -119,6 +118,10 @@ export function notAvailable() {
 
     contentAlert.classList.add("show-alert");
     
+    popUp();
+}
+
+window.onpopstate = () => {
     popUp();
 }
 

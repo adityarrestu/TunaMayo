@@ -174,6 +174,10 @@ class SliderAlbum extends HTMLElement {
                 }
 
                 @media (min-width: 320px) and (max-width: 767px) {
+                    :host {
+                        top: 0;
+                    }
+
                     .carousel {
                         height: 550px;
                     }
@@ -198,15 +202,15 @@ class SliderAlbum extends HTMLElement {
                     }
 
                     .featured-button {
-                        top: 420px;
+                        top: 400px;
                         left: initial;
                         right: 10px;
                         flex-direction: column;
                     }
 
                     .round {
-                        width: 30px;
-                        height: 30px;
+                        width: 40px;
+                        height: 40px;
                         margin: 5px 0;
                     }
                 }
@@ -315,7 +319,6 @@ class SliderAlbum extends HTMLElement {
             changeSlide(10);
         })
 
-        
     };
 
 }
