@@ -35,6 +35,7 @@ class FilterTag extends HTMLElement {
         const tagItem = this.shadowDOM.querySelectorAll(".tag-item");
         tagItem[0].classList.add("data-active");
 
+        // filter
         let filteredAlbums = (tag = "Baru Tayang") => {
             if (tag === "Baru Tayang" || tag === "Rekomendasi") {
                 return albums.filter(album => {
@@ -50,6 +51,7 @@ class FilterTag extends HTMLElement {
         gridContent.albums = filteredAlbums();
         main.appendChild(gridContent);
         
+        // add active to clicked tag
         tagItem.forEach(tag => {
             tag.addEventListener("click", () => {
                 // add class active data and remove
@@ -77,6 +79,18 @@ class FilterTag extends HTMLElement {
                 (tagContainer.scrollLeft + offset) <= (0 + 100) ?
                     buttonPrev.classList.remove("appear") : buttonPrev.classList.add("appear");
             })
+        })
+
+        window.addEventListener("scroll", () => {
+            let topDistance = window.scrollY - this.offsetTop;
+
+            console.log(topDistance);
+            if (this.className === "sticky-bar" && topDistance <= 700) {
+                this.classList.remove("sticky-bar");
+
+            } else if (topDistance >= 500) {
+                this.classList.add("sticky-bar");
+            }
         })
 
     }

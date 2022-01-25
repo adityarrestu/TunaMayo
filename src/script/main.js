@@ -136,6 +136,7 @@ export function notAvailable() {
     popUp();
 }
 
+// test function
 window.onpopstate = () => {
     popUp();
 }
