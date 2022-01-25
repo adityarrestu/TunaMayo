@@ -130,6 +130,7 @@ class AppBar extends HTMLElement {
 
         const rightNav = this.shadowDOM.querySelector(".right-nav");
         const searchBar = document.createElement("search-bar");
+        searchBar.classList.add("show-bar");
         rightNav.appendChild(searchBar);
     }
 }

@@ -41,6 +41,31 @@ main {
     justify-content: center;
 }
 
+.content-alert {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    width: fit-content;
+    height: 24px;
+    padding: 2px 10px;
+    background: #232428;
+    border-radius: 10px;
+    border: 1px solid #3e96db;
+    color: #3e96db;
+    font-size: 14px;
+    font-weight: 300;
+    transform: translate(-50%, 200%);
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+}
+
+.content-alert.show-alert {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+}
+
+/* MAIN CONTENT */
 .carousel-slider {
     position: relative;
     top: 50px;

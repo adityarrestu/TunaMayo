@@ -315,6 +315,7 @@ class SliderAlbum extends HTMLElement {
             changeSlide(10);
         })
 
+        
     };
 
 }

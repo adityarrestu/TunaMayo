@@ -54,19 +54,34 @@ playMedia.classList.add("hidden");
 const navBottom = document.createElement("nav-bottom");
 main.appendChild(navBottom);
 
-// hidden home page
+// content not available alert
+const contentAlert = document.createElement("div");
+contentAlert.classList.add("content-alert");
+contentAlert.textContent = "Maaf, fitur ini hanya pemanis";
+main.appendChild(contentAlert);
+
+// content not available pop up timer
+let timerPopUp;
+const popUp = () => {
+    timerPopUp = setTimeout(() => {
+        contentAlert.classList.remove("show-alert");
+    }, 2200);
+}
+
+
+// hidden home page function
 function hiddenChildElement() {
     carousel.classList.add("hidden");
     content.classList.add("hidden");
 }
 
-// show home page
+// show home page function
 function showChildElement() {
     carousel.classList.remove("hidden");
     content.classList.remove("hidden");
 }
 
-// route to home page
+// route to home page function
 export function routeHome() {
     // stop video player
     if (playMedia.className !== "hidden") {
@@ -80,7 +95,7 @@ export function routeHome() {
     showChildElement();
 }
 
-// route to album page
+// route to album page function
 export async function routeAlbum(album) {
     hiddenChildElement();
 
@@ -88,7 +103,7 @@ export async function routeAlbum(album) {
     albumPage.classList.remove("hidden");
 }
 
-// route to media player page
+// route to media player page function
 export async function routePlay(album, episode) {
     hiddenChildElement();
     albumPage.classList.add("hidden");
@@ -96,6 +111,15 @@ export async function routePlay(album, episode) {
     playMedia.albums = album; 
     playMedia.episodes = episode;
     playMedia.classList.remove("hidden");
+}
+
+// content not available alert function
+export function notAvailable() {
+    clearTimeout(timerPopUp);
+
+    contentAlert.classList.add("show-alert");
+    
+    popUp();
 }
 
 routeHome();
