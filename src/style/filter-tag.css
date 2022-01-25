@@ -115,10 +115,6 @@ button {
 }
 
 @media (min-width: 320px) and (max-width: 767px) {
-    :host {
-        height: 20px;
-    }
-    
     .tag-item {
         max-width: 300px;
         margin-right: 5px;

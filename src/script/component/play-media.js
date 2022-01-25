@@ -1,4 +1,5 @@
 import albums from "../collection/albums.js";
+import { notAvailable } from "../main.js";
 
 class PlayMedia extends HTMLElement {
     constructor() {
@@ -369,6 +370,11 @@ class PlayMedia extends HTMLElement {
             })
         })
         
+        // not available alert trigger for collection button
+        const collection = this.shadowDOM.querySelector(".collection");
+        collection.addEventListener("click", () => {
+            notAvailable();
+        })
     }
 }
 

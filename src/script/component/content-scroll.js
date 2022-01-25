@@ -142,7 +142,7 @@ class ContentScroll extends HTMLElement {
                 @media (min-width: 320px) and (max-width: 767px) {
                     :host {
                         max-width: 100%;
-                        height: 120px;
+                        height: 140px;
                     }
                     
                     .flex-container {

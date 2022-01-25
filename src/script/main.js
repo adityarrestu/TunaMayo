@@ -68,6 +68,15 @@ const popUp = () => {
     }, 2200);
 }
 
+// scroll to top of page function
+function topScroll() {
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    })
+}
+
 // hidden home page function
 function hiddenChildElement() {
     carousel.classList.add("hidden");
@@ -88,6 +97,8 @@ export function routeHome() {
         videoPlayer.setAttribute("src", '');
     }
 
+    topScroll();
+
     // hidden album page or media player page
     albumPage.classList.add("hidden") || playMedia.classList.add("hidden");
     
@@ -98,6 +109,8 @@ export function routeHome() {
 export async function routeAlbum(album) {
     hiddenChildElement();
 
+    topScroll();
+
     albumPage.albums = album;
     albumPage.classList.remove("hidden");
 }
@@ -106,6 +119,8 @@ export async function routeAlbum(album) {
 export async function routePlay(album, episode) {
     hiddenChildElement();
     albumPage.classList.add("hidden");
+
+    topScroll();
     
     playMedia.albums = album; 
     playMedia.episodes = episode;

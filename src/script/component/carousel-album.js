@@ -1,5 +1,5 @@
 import albums from "../collection/albums.js";
-import { routePlay } from "../main.js";
+import { notAvailable, routePlay } from "../main.js";
 
 class CarouselAlbum extends HTMLElement {
     constructor() {
@@ -231,22 +231,31 @@ class CarouselAlbum extends HTMLElement {
             
             @media screen and (max-width: 320px) {
                 .content-item img {
-                    height: 180px;
+                    height: 140px;
+                    width: 95%;
                 }
             }
             
             @media (min-width: 321px) and (max-width: 375px) {
                 .content-item img {
-                    height: 200px;
+                    height: 160px;
+                    width: 95%;
                 }
             }
             
             @media (min-width: 376px) and (max-width: 600px) {
                 .content-item img {
-                    height: 230px;
+                    height: 180px;
+                    width: 95%;
                 }
             }
-            
+
+            @media (min-width: 320px) and (max-width: 768px) {
+                .content-container {
+                    margin-bottom: 80px;
+                }
+            }
+                        
             @media screen and (max-width: 1024px) {
                 :host {
                     grid-template-columns: 100%;
@@ -415,6 +424,11 @@ class CarouselAlbum extends HTMLElement {
             })
         })
 
+        // not available alert trigger for collection button
+        const collection = this.shadowDOM.querySelector(".collection");
+        collection.addEventListener("click", () => {
+            notAvailable();
+        })
     }
 }
 

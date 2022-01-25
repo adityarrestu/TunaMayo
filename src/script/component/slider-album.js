@@ -1,4 +1,4 @@
-import { routeAlbum } from '../main.js';
+import { notAvailable, routeAlbum } from '../main.js';
 import './slider-item.js';
 
 class SliderAlbum extends HTMLElement {
@@ -199,6 +199,7 @@ class SliderAlbum extends HTMLElement {
 
                     .prev, .next {
                         display: none;
+                        pointer-events: none;
                     }
 
                     .featured-button {
@@ -319,6 +320,54 @@ class SliderAlbum extends HTMLElement {
             changeSlide(10);
         })
 
+        // swiped with touch mechanic blok function
+        slider.addEventListener("touchstart", startTouch, false);
+        slider.addEventListener("touchmove", moveTouch, false);
+
+        // Swipe up/down/left/right
+        let initialX = null;
+
+        // detect first move
+        function startTouch(e) {
+            initialX = e.touches[0].clientX;
+        }
+
+        function moveTouch(e) {
+            if (initialX === null) {
+                return;
+            }
+
+            // detect swiped movement
+            let currentX = e.touches[0].clientX;
+            let diffX = initialX - currentX;
+
+            // sliding horizontally
+            if (diffX > 0) {
+                // swiped left
+                clearInterval(playSlider);
+                changeSlide(1);
+                repeater();
+            } else {
+                // swiped right
+                clearInterval(playSlider);
+                changeSlide(-1);
+                repeater();
+            }
+            
+            // reset touch
+            initialX = null;
+
+            // cancel event after reset
+            e.preventDefault();
+        };
+
+        // not available alert trigger for collection button
+        const plus = this.shadowDOM.querySelector(".plus");
+        plus.addEventListener("click", () => {
+            console.log("ditekan...")
+            notAvailable();
+        })
+        
     };
 
 }

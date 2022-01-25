@@ -78,20 +78,13 @@ class GridItem extends HTMLElement {
                 }
 
                 @media (min-width: 320px) and (max-width: 767px) {
-                    :host {
-                        width: 90px;
-                        height: 160px;
-                    }
-
                     .album-wrap {
-                        width: 90px;
-                        height: 140px;
                         border-radius: 5px;
                     }
 
                     .title {
-                        font-size: 8px;
-                        max-height: 18px;
+                        font-size: 10px;
+                        max-height: 24px;
                         margin: 2px 0;
                     }
                     
@@ -99,6 +92,42 @@ class GridItem extends HTMLElement {
                         font-size: 8px;
                         padding: 0 0 2px 4px;
                         box-shadow: 0px -5px 7px rgba(17, 19, 25, .5) inset;
+                    }
+                }
+
+                @media (min-width: 421px) and (max-width: 767px) {
+                    :host {
+                        width: 90px;
+                        height: 165px;
+                    }
+
+                    .album-wrap {
+                        width: 90px;
+                        height: 140px;
+                    }
+                }
+
+                @media (min-width: 371px) and (max-width: 420px) {
+                    :host {
+                        width: 110px;
+                        height: 185px;
+                    }
+
+                    .album-wrap {
+                        width: 110px;
+                        height: 160px;
+                    }
+                }
+     
+                @media (min-width: 320px) and (max-width: 370px) {
+                    :host {
+                        width: 90px;
+                        height: 165px;
+                    }
+
+                    .album-wrap {
+                        width: 90px;
+                        height: 140px;
                     }
                 }
             </style>

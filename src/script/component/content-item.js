@@ -58,19 +58,19 @@ class ContentItem extends HTMLElement {
 
                 @media (min-width: 320px) and (max-width: 767px) {
                     :host {
-                        min-width: 120px;
+                        min-width: 150px;
                         margin: 3px;
                     }
 
                     .content-wrap {
-                        height: 60px;
-                        border-radius: 2px;
+                        height: 80px;
+                        border-radius: 4px;
                     }
 
                     .title {
                         max-height: 20px;
                         margin: 5px;
-                        font-size: 8px;
+                        font-size: 10px;
                     }
 
                     .episode {

@@ -139,15 +139,33 @@ class GridContent extends HTMLElement {
                     }
                     
                     .grid-wrap {
-                        grid-template-columns: repeat(auto-fill, minmax(100px, 0.8fr));
                         grid-gap: 5px 3px;
                         max-width: 100%;
                         height: 100%;
+                        margin: 5px 0 0 0;
                         align-self: center;
                     }
 
                     .more {
                         display: none;
+                    }
+                }
+
+                @media (min-width: 421px) and (max-width: 767px) {
+                    .grid-wrap {
+                        grid-template-columns: repeat(auto-fill, minmax(100px, 0.8fr));
+                    }
+                }
+
+                @media (min-width: 371px) and (max-width: 420px) {
+                    .grid-wrap {
+                        grid-template-columns: repeat(auto-fill, minmax(120px, 0.8fr));
+                    }
+                }
+
+                @media (min-width: 320px) and (max-width: 370px) {
+                    .grid-wrap {
+                        grid-template-columns: repeat(auto-fill, minmax(100px, 0.8fr));
                     }
                 }
             </style>
