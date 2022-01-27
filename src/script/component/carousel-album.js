@@ -67,9 +67,8 @@ class CarouselAlbum extends HTMLElement {
             
             .description {
                 margin: 10px 5px;
-                max-height: 57px;;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                max-height: 100%;
+                font-weight: 400;
             }
             
             button {
@@ -113,7 +112,7 @@ class CarouselAlbum extends HTMLElement {
             
             hr {
                 z-index: 2;
-                margin: 0 50px;
+                margin: 10px 50px 0 50px;
                 border-top: .5px solid #434358;
                 grid-column: span 2;
                 grid-row: 3;
@@ -122,7 +121,7 @@ class CarouselAlbum extends HTMLElement {
             .navigation {
                 grid-column: 1;
                 grid-row: 2;
-                margin: 0 50px;
+                margin: 10px 50px 0 50px;
                 color: #8A8A8D;
                 font-size: 18px;
             }

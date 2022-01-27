@@ -9,6 +9,7 @@ import './component/footer-bar.js';
 import './component/nav-bottom.js';
 import albums from './collection/albums.js';
 import featuredAlbums from './collection/featured-album.js';
+import newAiring from './collection/new-airing.js';
 
 const main = document.querySelector("main");
 
@@ -28,7 +29,7 @@ carousel.appendChild(slider);
 
 // content scroll for content in home page
 const contentScroll = document.createElement("content-scroll");
-contentScroll.albums = featuredAlbums;
+contentScroll.albums = newAiring;
 contentScroll.title = "Baru Tayang";
 content.appendChild(contentScroll);
 
